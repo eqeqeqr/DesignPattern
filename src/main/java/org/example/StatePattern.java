@@ -58,6 +58,7 @@ class StateA implements State {
             count--;
             machine.setCount(count);
             if (count ==0){
+                //转入到无货状态
                 machine.setState(new StateB());
             }
         }else{
@@ -73,6 +74,7 @@ class StateB implements State {
             System.out.println("商品已售罄!等待补货");
             machine.setCount(5);
             System.out.println("补货成功");
+            //转入到有货状态
             machine.setState(new StateA());
         }
     }
