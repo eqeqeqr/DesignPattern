@@ -42,6 +42,7 @@ class Machine {//贩卖机
     }
 
     public void request(){
+        //调用当前状态的处理方法来处理请求
         state.Handle(this);
     }
 }
