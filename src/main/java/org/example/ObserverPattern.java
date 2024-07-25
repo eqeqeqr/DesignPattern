@@ -11,6 +11,7 @@ public class ObserverPattern {
         Observers observerB=new ConcreteObserver("B",subjectA);
         Observers observerC=new ConcreteObserver("C",subjectA);
         Observers observerD=new ConcreteObserver("D",subjectA);
+
         //通知
         System.out.println("目标A和观察者B,C,D的初始状态: "+subjectA.getState()+" "+observerB.getState()+" "+observerC.getState()+" "+observerD.getState());
         System.out.println("目标A的状态改变为--------》哈哈哈状态");
