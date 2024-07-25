@@ -4,7 +4,9 @@ package org.example;
  * */
 public class TemplateMethodPattern {
     public static void main(String[] args) {
+
         People teachers = new Teachers();
+
         People students = new Students();
 
         students.templateMethod();
