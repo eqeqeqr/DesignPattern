@@ -26,7 +26,7 @@ interface Subjects {//目标
     public void setState(String state);//设置状态
     public String getState();//获取状态
 }
-class ConcreteSubject implements Subjects {
+class ConcreteSubject implements Subjects {//1对多的关系，所有它维护所有和它有关的观察者列表
     private String state;
     private List<Observers> observersList;
     public ConcreteSubject() {
@@ -45,7 +45,7 @@ class ConcreteSubject implements Subjects {
     }
 
     @Override
-    public void Notify() {
+    public void Notify() {//通知所有的观察者
         for (Observers observer : observersList){
             observer.update();
         }
