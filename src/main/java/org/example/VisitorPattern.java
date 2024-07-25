@@ -17,6 +17,7 @@ import java.util.List;
  * 将操作封装在访问者中，数据结构类只需提供一个接受访问者的方法。
  * 这使得代码更具扩展性和可维护性，添加新的操作时只需增加新的访问者类，而无需修改现有的数据结构类。
  *
+ * 使用访问者模式后，数据结构类（如老师和学生）只需要提供一个 accept 方法，而具体的操作（如计算年龄和打印信息）被封装在访问者中
  * */
 public class VisitorPattern {
     public static void main(String[] args) {
