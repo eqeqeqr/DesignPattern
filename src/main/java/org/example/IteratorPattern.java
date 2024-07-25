@@ -44,15 +44,15 @@ public class IteratorPattern {
         //自定义的迭代器
         System.out.println("自定义的迭代器===================================");
         //创建迭代器对应对象的接口，这里提供了创建迭代器接口
-        BookAggregate bookAggregate=new BookAggregate();
+        ObjectAggregate objectAggregate=new ObjectAggregate();
 
 
         for(int i=0;i<bookNames.length;i++){
             //初始化聚合，把数据添加到聚合对象中
-            bookAggregate.addBook(new Book(bookNames[i],bookPrices[i]));
+            objectAggregate.add(new Book(bookNames[i],bookPrices[i]));
         }
         //通过聚合对象创建迭代器对象
-        Self_Iterator selfIterator = bookAggregate.createIterator();
+        Self_Iterator selfIterator = objectAggregate.createIterator();
         //迭代器遍历
         while (selfIterator.hasNext()){
             Book book=(Book) selfIterator.next();
@@ -64,17 +64,17 @@ interface Self_Iterator{
     public boolean hasNext();
     public Object next();
 }
-class BookIterator implements Self_Iterator{
+class ObjectIterator implements Self_Iterator{
     private int index=-1;
-    private BookAggregate bookAggregate;
-    public BookIterator(BookAggregate bookAggregate){
+    private ObjectAggregate objectAggregate;
+    public ObjectIterator(ObjectAggregate objectAggregate){
         this.index=0;
-        this.bookAggregate=bookAggregate;
+        this.objectAggregate=objectAggregate;
     }
 
     @Override
     public boolean hasNext() {
-        if (index<bookAggregate.getSize()){
+        if (index<objectAggregate.getSize()){
             return true;
         }
         return false;
@@ -82,7 +82,7 @@ class BookIterator implements Self_Iterator{
 
     @Override
     public Object next() {
-        Object obj=bookAggregate.getBook(index);
+        Object obj=objectAggregate.get(index);
         index++;
         return obj;
     }
@@ -90,20 +90,21 @@ class BookIterator implements Self_Iterator{
 interface Aggregate{
     public Self_Iterator createIterator();
 }
-class BookAggregate implements Aggregate{
-    private List<Book> bookList=new ArrayList<>();
-    public void addBook(Book book){
-        bookList.add(book);
+class ObjectAggregate implements Aggregate{
+    private List<Object> list=new ArrayList<>();
+    public void add(Object obj){
+        list.add(obj);
     }
-    public Book getBook(int index){
-        return bookList.get(index);
+    public Object get(int index){
+        return list.get(index);
     }
     public int getSize(){
-        return bookList.size();
+        return list.size();
     }
     @Override
     public Self_Iterator createIterator() {
-        return new BookIterator(this);
+        //把当前自己的聚合对象传给迭代器
+        return new ObjectIterator(this);
     }
 }
 
