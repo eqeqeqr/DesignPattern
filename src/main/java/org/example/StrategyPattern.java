@@ -10,6 +10,7 @@ public class StrategyPattern {
         Strategy mul=new MulStrategy();//*
         Strategy div=new DivStrategy();///
 
+
         OperationContext context=new OperationContext(add);
         context.Operation(1,5);
         context=new OperationContext(sub);
