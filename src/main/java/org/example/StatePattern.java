@@ -5,13 +5,13 @@ package org.example;
  * */
 public class StatePattern {
     public static void main(String[] args) {
-        Machine machine = new Machine(0); //存货3
-        machine.request();
-        machine.request();
-        machine.request();
+        Machine machine = new Machine(3); //存货3
+        machine.request();//购买 剩余count=2
+        machine.request();//购买 剩余count=1
+        machine.request();//购买 剩余count=0
         System.out.println("当前存货数量：" + machine.getCount());
         System.out.println("当前状态：" + machine.getState());
-        machine.request();
+        machine.request();//无货，转入状态到State状态，并进行补货
 
     }
 }
