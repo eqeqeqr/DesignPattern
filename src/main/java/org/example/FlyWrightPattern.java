@@ -18,6 +18,7 @@ public class FlyWrightPattern {
     }
 }
 class PieceFactory{
+    //也可以使用map 如果有就返回，没有就创建一个
     private Piece[] pieces={new WhitePiece(),new BlackPiece()};
     public Piece getPiece(int key){
         if (key==0) {
