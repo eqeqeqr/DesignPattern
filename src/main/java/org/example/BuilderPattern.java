@@ -7,7 +7,6 @@ import java.util.List;
  * */
 public class BuilderPattern {
     public static void main(String[] args) {
-        
         Director director=new Director();
         //构建方式A
         Builder builderA=new BuilderA();
