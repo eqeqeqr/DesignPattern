@@ -7,14 +7,26 @@ import java.util.List;
  * */
 public class BuilderPattern {
     public static void main(String[] args) {
+        Director director=new Director();
         //构建方式A
         Builder builderA=new BuilderA();
-        builderA.buildPart();
-        builderA.getResult().show();
+        //builderA.buildPart();
+        //builderA.getResult().show();
+        director.Construct(builderA);
+        BP_Product product1=builderA.getResult();
+        product1.show();
         //构建方式B
         Builder builderB=new BuilderB();
-        builderB.buildPart();
-        builderB.getResult().show();
+        //builderB.buildPart();
+        //builderB.getResult().show();
+        director.Construct(builderB);
+        BP_Product product2=builderB.getResult();
+        product2.show();
+    }
+}
+class Director{
+    public void Construct(Builder builder){
+        builder.builderPart()
     }
 }
 abstract class Builder{
